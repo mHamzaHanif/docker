@@ -1,0 +1,230 @@
+https://hub.docker.com/u/mhamzahanif 
+pass: Docker123!
+
+
+Docker Installation
+====================
+
+sudo apt-get update
+
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get update
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+*********************************************************************************
+
+Docker version & info
+======================
+
+docker --version
+
+docker info
+
+
+*********************************************************************************
+
+Naming & tagging
+=================
+official     -> for google type companies
+non official -> For us 
+
+non official -> https://hub.docker.com/u/mhamzahanif pass: Docker123!@#
+
+For official image:
+-------------------
+	docker image pull <repository>:<tag> -> e.g: docker image pull ubuntu:latest
+
+For non-official iamge:
+-----------------------
+	docker iamge pull username/<repository>:<tag> -> docker iamge pull mhamzahanif/hello:latest
+
+Note: Here tag = 'latest' is by default if there is no tag mentioned at the time of creation of image 
+----  -----------------------------------------------------------------------------------------------
+
+*********************************************************************************
+
+Pulling iamge
+=============
+
+Official -> docker image pull alpine:latest
+
+non-official -> docker pull aamirpinger/helloworld (no tag=by defalult pull latest image)
+
+Note: 'image pull' or 'pull' are same
+----- -------------------------------- 
+
+*********************************************************************************
+
+Image Listing
+=============
+
+'docker image ls' OR 'docker images' -> list all downloaded iamges 
+ 
+*********************************************************************************
+
+Remove Images
+=============
+
+docker iamge rm alpine:latest -> remove this image (if tag is not given bydefault it remove latest tag)
+
+*********************************************************************************
+
+Running Container
+======================
+
+docker run -it aamirpinger/helloworld sh OR bash -> This run image locally
+Note: -it(interactinve), sh Or bash (output on either shell OR bash)
+-----  -------------------------------------------------------------	
+
+ls -> show container file sys
+cd -> as respective with linux
+exit -> exit the interactive shell of container
+
+
+docker container ls -> Shows only running containers
+
+docker container ls -a -> shows all type of container we have with their state
+
+*********************************************************************************
+
+Back to main domain without being closed container
+==================================================
+
+CTRL + PQ OR PS -> Back to main domain 
+
+docker ps    -> Give status of running container behind of image with names & id
+
+docker pa -a  -> Shows all the status of image with names & id
+
+Back to specified running container -> docker exec -it sad_dijkstra sh 
+
+
+*********************************************************************************
+
+Closing container
+=================
+
+docker container stop hungry_swanson
+
+*********************************************************************************
+
+Starting container
+==================
+
+docker container start hungry_swanson
+
+*********************************************************************************
+
+Removing container
+==================
+
+docker container rm hungry_swanson
+
+
+Container in Detached mode
+==========================
+
+docker container run -d aamirpinger/flag -> -d = detached
+
+Note: There is no access to public through browser(thus, we use port)
+
+*********************************************************************************
+
+Publish Port
+============
+
+docker container run -d -p 5010:80 aamirpinger/helloworld:latest -> -p = published to browser
+
+
+http://localhost:5010/  -> browser
+
+*********************************************************************************
+
+Custom container naming
+=======================
+
+docker container run -d --name docker_app -p 5020:80 aamirpinger/flag
+
+http://localhost:5020/ -> browser
+
+*********************************************************************************
+	
+Building docker file
+====================
+
+docker build -t first-docker-app .
+
+docker container run --name=first-docker-cont -d -p 8500:80 first-docker-app
+
+http://localhost:8500 -> browser
+	
+*********************************************************************************
+
+Renaming tag of image
+=====================
+
+docker tag mhamzahanif/firs-app firs-app
+
+*********************************************************************************
+
+Push image
+==========
+
+docker login
+
+docker push mhamzahanif/firs-app
+
+*********************************************************************************
+
+Info of image
+=============
+
+docker history mhamzahanif/firs-app
+
+docker inspect mhamzahanif/firs-app
+
+*********************************************************************************
+
+Bind mount
+==========
+							system path	 container path							
+								|		|									|
+docker container run -it --name=test-app -v /hmome/hamza/test-app-sys-folder:/test-app-container-folder aamirpinger/helloworld sh
+
+
+
+*********************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
